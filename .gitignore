@@ -1,0 +1,14 @@
+node_modules/
+dist/
+output/
+
+# Machine-specific files written by `npm run setup`
+clice-e2e.json
+examples/compile_commands.json
+
+# clice's own cache when this folder is opened in an editor
+.clice/
+targets/
+
+# Design notes and dated reports; kept locally, not published
+docs/

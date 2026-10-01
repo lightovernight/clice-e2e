@@ -1,0 +1,40 @@
+{
+  "name": "clice-e2e",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Real end-to-end tests for the clice C++ language server: replays character-level typing over LSP and detects crashes.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lightovernight/clice-e2e.git"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "setup": "node scripts/setup.js",
+    "wsl": "wsl.exe -e bash scripts/wsl.sh",
+    "wsl:stop": "wsl.exe -e bash -c \"pkill -INT -f dist/src/cli.js || true\"",
+    "test": "npm run build && node scripts/run-tests.js",
+    "generate": "npm run build --silent && node dist/src/cli.js generate",
+    "replay": "npm run build --silent && node dist/src/cli.js replay",
+    "e2e": "npm run build --silent && node dist/src/cli.js e2e"
+  },
+  "dependencies": {
+    "tree-sitter": "0.21.1",
+    "tree-sitter-cpp": "0.23.4",
+    "vscode-languageserver-protocol": "3.17.5"
+  },
+  "overrides": {
+    "tree-sitter-cpp": {
+      "tree-sitter-c": "0.23.1"
+    }
+  },
+  "devDependencies": {
+    "@types/node": "20.19.43",
+    "typescript": "7.0.2"
+  }
+}

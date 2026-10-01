@@ -1,0 +1,8 @@
+{
+  "clice": "PATH/TO/clice.exe",
+  "outputRoot": "output/runs",
+  "projects": [
+    { "root": "examples", "compileCommands": "examples/compile_commands.json" },
+    { "root": "C:/path/to/project", "compileCommands": "C:/path/to/project/build/compile_commands.json" }
+  ]
+}
